@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Shower Presentation Engine</title>
+    <title>Case studies: Two color management plugins for PostCSS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="shower/themes/material/styles/styles.css">
@@ -19,6 +19,9 @@
         }
         .slide pre {
             margin-top: 0;
+        }
+        .slide .shout {
+            box-sizing: border-box;
         }
         .stamp {
             position: absolute;
@@ -53,17 +56,19 @@
 <body class="shower list">
 
 <header class="caption">
-    <h1>Два плагина к PostCSS для управления цветом</h1>
-    <p>Владимир Кузнецов, Хантфлоу</p>
+    <h1>Case studies: Two color management plugins for PostCSS</h1>
+    <p>Vladimir Kuznetsov, Huntflow</p>
 </header>
 
 <section class="slide clear" id="cover">
     <div style="text-align: center">
         <h2 style="margin-top: 80px;">
-            Два плагина к PostCSS для управления цветом
+            <span class="b">Case studies:</span>
+            <span class="b">Two color management</span>
+            <span class="b">plugins for PostCSS</span>
         </h2>
-        <p>Владимир Кузнецов, Хантфлоу</p>
-        <p>FrontTalks, Екатеринбург, 2018</p>
+        <p>Vladimir Kuznetsov, Huntflow</p>
+        <p>CSS-Minsk-JS, 2018</p>
     </div>
 </section>
 
@@ -72,17 +77,17 @@
 </section>
 
 <section class="slide">
-    <h2>PostCSS разбирает CSS в AST</h2>
-    <img src="img/postcss-schematic1.svg" alt="PostCSS конвертирует CSS в AST и обратно">
+    <h2>PostCSS converts CSS into an AST</h2>
+    <img src="img/postcss-schematic1.svg" alt="PostCSS converts CSS into an AST and back">
 </section>
 
 <section class="slide">
-    <h2>Плагины PostCSS изменяют AST</h2>
-    <img src="img/postcss-schematic2.svg" alt="Плагины PostCSS меняют AST">
+    <h2>PostCSS plugins transform AST</h2>
+    <img src="img/postcss-schematic2.svg" alt="PostCSS plugins transform AST">
 </section>
 
 <section class="slide">
-    <h2 class="shout">PostCSS бесполезен без плагинов</h2>
+    <h2 class="shout">PostCSS is useless without its&nbsp;plugins</h2>
 </section>
 
 <section class="slide">
@@ -90,7 +95,7 @@
 </section>
 
 <section class="slide">
-    <h2><a href="https://github.com/postcss/postcss/blob/master/docs/plugins.md">Плагины PostCSS</a></h2>
+    <h2><a href="https://github.com/postcss/postcss/blob/master/docs/plugins.md">PostCSS plugins</a></h2>
     <div class="columns two">
         <div>
             <ul>
@@ -120,7 +125,7 @@
 </section>
 
 <section class="slide">
-    <h2><a href="https://github.com/postcss/postcss/blob/master/docs/plugins.md">Плагины PostCSS</a></h2>
+    <h2><a href="https://github.com/postcss/postcss/blob/master/docs/plugins.md">PostCSS plugins</a></h2>
     <div class="columns two">
         <div>
             <ul>
@@ -152,14 +157,14 @@
 
 <section class="slide">
     <p>
-        Может оказаться, что существующий плагин решает задачу, но не так как вам хотелось бы.
-        Что делать?
+        It might happen that an existing plugin works not as you’re expecting.<br>
+        What can you do?
     </p>
 
     <ul>
-        <li>смириться</li>
-        <li>сделать PR в плагин</li>
-        <li>написать свой плагин</li>
+        <li>accept</li>
+        <li>make a PR in the plugin</li>
+        <li>write your own plugin</li>
     </ul>
 </section>
 
@@ -208,8 +213,8 @@
 </section>
 
 <section class="slide">
-    <h2>Обход дерева</h2>
-    <p>Типы узлов</p>
+    <h2>Abstract Syntax Tree traversal</h2>
+    <p>The types of the node</p>
     <ul>
         <li>rule (div, .list)</li>
         <li>declaration (color, background)</li>
@@ -219,7 +224,7 @@
 </section>
 
 <section class="slide">
-    <h2 class="shout">Тестирование</h2>
+    <h2 class="shout">Unit tests</h2>
 </section>
 
 <section class="slide">
@@ -227,7 +232,7 @@
 </section>
 
 <section class="slide">
-    <h2 class="shout">Пример №1</h2>
+    <h2 class="shout">Example #1</h2>
 </section>
 
 <section class="slide">
@@ -281,10 +286,10 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Варианты записи цвета</h2>
+    <h2>The ways to define a color</h2>
     <div class="columns two">
         <div>
-            <p><strong>Сплошные цвета</strong></p>
+            <p><strong>Solid color</strong></p>
             <ul>
                 <li>white</li>
                 <li>#333</li>
@@ -294,7 +299,7 @@ a { color: <mark>#556832</mark>; }
             </ul>
         </div>
         <div class="next">
-            <p><strong>Цвета с прозрачностью</strong></p>
+            <p><strong>Transparent color</strong></p>
             <ul>
                 <li>rgba(47, 79, 79, 0.5)</li>
                 <li>hsla(180, 25%, 25%, 0.5)</li>
@@ -316,7 +321,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Разбор значения узла decl</h2>
+    <h2>Parsing a decl</h2>
     <pre><code>#main { border: 1px solid #2F4F4F }</code></pre>
     <pre><code>decl: {
   props: "border",
@@ -325,7 +330,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide clear">
-    <img src="img/lamp.svg" alt="Идея!" class="cover w h">
+    <img src="img/lamp.svg" alt="Idea!" class="cover w h">
 </section>
 
 <section class="slide">
@@ -339,14 +344,14 @@ a { color: <mark>#556832</mark>; }
         <code>    decl.value,</code>
         <code>    { context: 'value' }</code>
         <code>  );</code>
-        <code>  // тут можно модифицировать parsedValue</code>
+        <code>  // you can modify parsedValue here</code>
         <code>  decl.value = cssTree.generate(parsedValue);</code>
         <code>});</code>
     </pre>
 </section>
 
 <section class="slide clear">
-    <img src="img/inception-toupie.jpg" alt="Волчок" class="cover w h">
+    <img src="img/inception-toupie.jpg" alt="A spinning top" class="cover w h">
 </section>
 
 <section class="slide">
@@ -390,7 +395,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Типы узлов CSSTree, которые могут содержать цвет</h2>
+    <h2>The types of the CSSTree nodes, which can contain color</h2>
     <ul>
         <li>Identifier <span class="c">darkslategray</span></li>
         <li>HexColor <span class="c">#2F4F4F</span></li>
@@ -402,7 +407,7 @@ a { color: <mark>#556832</mark>; }
     <pre>
         <code>function <mark>visitor</mark>(node, item, list) {</code>
         <code>  if (node.name === 'darkslategray') {</code>
-        <code>    // изменяем node</code>
+        <code>    // modify the node</code>
         <code>  }</code>
         <code>}</code>
         <code>cssTree.walk(parsedValue, {</code>
@@ -429,7 +434,7 @@ a { color: <mark>#556832</mark>; }
 <section class="slide">
     <h2 class="shout">
         <span class="b">rgb(), rgba(),</span>
-        <span class="b">hsl() и hsla()</span>
+        <span class="b">hsl() and hsla()</span>
     </h2>
 </section>
 
@@ -466,14 +471,14 @@ a { color: <mark>#556832</mark>; }
 <section class="slide">
     <h2><a href="https://github.com/mistakster/postcss-alter-color">postcss-alter-color</a></h2>
     <ul>
-        <li>Познакомились с AST explorer.</li>
-        <li>Разобрались с API PostCSS и CSSTree.</li>
-        <li>Написали плагин, который делает больше, чем просто поиск и замена в текстовом редакторе.</li>
+        <li>Learned a bit about AST explorer.</li>
+        <li>Understrood APIs of PostCSS and CSSTree.</li>
+        <li>Made a plugin, which makes more than ordinary search and replace in a text editor.</li>
     </ul>
 </section>
 
 <section class="slide">
-    <h2 class="shout">Пример №2</h2>
+    <h2 class="shout">Example #2</h2>
 </section>
 
 <section class="slide">
@@ -517,31 +522,31 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide clear">
-    <h2>Тема «Website»</h2>
+    <h2>Theme “Website”</h2>
     <img src="img/theme-website.png" style="width: 100%">
 </section>
 
 <section class="slide clear">
-    <h2>Тема «Student Portal»</h2>
+    <h2>Theme “Student Portal”</h2>
     <img src="img/theme-portal.png" style="width: 100%">
 </section>
 
 <section class="slide clear">
-    <h2>Тема «International»</h2>
+    <h2>Theme “International”</h2>
     <img src="img/theme-international.png" style="width: 100%">
 </section>
 
 <section class="slide clear">
-    <h2>Тема «Business»</h2>
+    <h2>Theme “Business”</h2>
     <img src="img/theme-business.png" style="width: 100%">
 </section>
 
 <section class="slide">
-    <h2>Решения</h2>
+    <h2>Possible solutions</h2>
     <ul>
         <li>CSS custom properties;</li>
-        <li>переменные препроцессора и генерация 4 различных CSS-файлов;</li>
-        <li>использовать PostCSS для генерации стилей.</li>
+        <li>Pre-processor variables and 4 different CSS-files;</li>
+        <li>PostCSS plugin to generate styles.</li>
     </ul>
 </section>
 
@@ -557,16 +562,16 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Условия задачи</h2>
+    <h2>The task</h2>
     <ul>
-        <li>Мы пишем CSS как обычно, используя цветовую схему главного сайта.</li>
-        <li>Мы используем модификаторы блока или элемента («primary», «secondary» и «accent») для назначения цвета.</li>
-        <li>Плагин для PostCSS генерирует дополнительные селекторы, изменяя в них цвет согласно схемы.</li>
+        <li>We write CSS as ususal keeping in mind the color scheme of the main site.</li>
+        <li>We use block and element modifiers (“primary”, “secondary” and “accent”) to set the colors.</li>
+        <li>The plugin generates additional rules with relevant color based on the scheme</li>
     </ul>
 </section>
 
 <section class="slide">
-    <h2>Конфигурация</h2>
+    <h2>Configuration</h2>
     <pre><code>[ { "name": "primary", "match": "#e54096",
   "themes": {
     "portal": "#0080c5",
@@ -577,7 +582,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Результат</h2>
+    <h2>Result</h2>
     <pre>
         <code class="mark">.tile_primary { color: <span style="background: #e54096;" class="tiny-sample"></span> #e54096 }</code>
         <code>.theme-portal .tile_primary { color: <span style="background: #0080c5;" class="tiny-sample"></span> #0080c5 }</code>
@@ -668,13 +673,13 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Подозрительное правило</h2>
-    <p>Модификатор есть, а изменить ничего нельзя!</p>
+    <h2>Suspicious rule</h2>
+    <p>A rule contains modifier, but plugin can’t find any color to change.</p>
     <pre><code>rule.warn(result, 'Suspicious rule');</code></pre>
 </section>
 
 <section class="slide">
-    <h2>Сложные случаи</h2>
+    <h2>Complex cases</h2>
     <pre>
         <code>.tile_<mark>primary</mark> .text-tile__heading {</code>
         <code>  color: #e54096;</code>
@@ -686,7 +691,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Светлые и тёмные оттенки</h2>
+    <h2>Light and dark shades</h2>
     <pre>
         <code>.button_primary[disabled] { </code>
         <code>  background: lighten(<span style="background: #e54096;" class="tiny-sample"></span> #e54096, 20%); <span class="comment">/* <span style="background: #f19ac7;" class="tiny-sample"></span> #f19ac7 */</span></code>
@@ -701,88 +706,100 @@ a { color: <mark>#556832</mark>; }
     <table>
         <tbody>
             <tr>
-                <th>Тёмный</th>
-                <th>Базовый</th>
-                <th>Светлый</th>
+                <th>Dark</th>
+                <th>Base</th>
+                <th>Light</th>
             </tr>
             <tr>
                 <td>
-                    <span style="background: hsl(329, 76%, 37%);" class="tiny-sample"></span> hsl(329, 76%, 37%)
+                    <span style="background: hsl(329, 76%, 37%);" class="tiny-sample"></span>
+                    hsl(329, 76%, 37%)
                 </td>
                 <td>
-                    <span style="background: hsl(329, 76%, 57%);" class="tiny-sample"></span> hsl(329, 76%, 57%)
+                    <span style="background: hsl(329, 76%, 57%);" class="tiny-sample"></span>
+                    hsl(329, 76%, 57%)
                 </td>
                 <td>
-                    <span style="background: hsl(329, 76%, 77%);" class="tiny-sample"></span> hsl(329, 76%, 77%)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span style="background: hsl(201, 100%, 19%);" class="tiny-sample"></span> hsl(201, 100%, 19%)
-                </td>
-                <td>
-                    <span style="background: hsl(201, 100%, 39%);" class="tiny-sample"></span> hsl(201, 100%, 39%)
-                </td>
-                <td>
-                    <span style="background: hsl(201, 100%, 59%);" class="tiny-sample"></span> hsl(201, 100%, 59%)
+                    <span style="background: hsl(329, 76%, 77%);" class="tiny-sample"></span>
+                    hsl(329, 76%, 77%)
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span style="background: hsl(68, 68%, 32%);" class="tiny-sample"></span> hsl(68, 68%, 32%)
+                    <span style="background: hsl(201, 100%, 19%);" class="tiny-sample"></span>
+                    hsl(201, 100%, 19%)
                 </td>
                 <td>
-                    <span style="background: hsl(68, 68%, 52%);" class="tiny-sample"></span> hsl(68, 68%, 52%)
+                    <span style="background: hsl(201, 100%, 39%);" class="tiny-sample"></span>
+                    hsl(201, 100%, 39%)
                 </td>
                 <td>
-                    <span style="background: hsl(68, 68%, 72%);" class="tiny-sample"></span> hsl(68, 68%, 72%)
+                    <span style="background: hsl(201, 100%, 59%);" class="tiny-sample"></span>
+                    hsl(201, 100%, 59%)
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span style="background: hsl(3, 78%, 34%);" class="tiny-sample"></span> hsl(3, 78%, 34%)
+                    <span style="background: hsl(68, 68%, 32%);" class="tiny-sample"></span>
+                    hsl(68, 68%, 32%)
                 </td>
                 <td>
-                    <span style="background: hsl(3, 78%, 54%);" class="tiny-sample"></span> hsl(3, 78%, 54%)
+                    <span style="background: hsl(68, 68%, 52%);" class="tiny-sample"></span>
+                    hsl(68, 68%, 52%)
                 </td>
                 <td>
-                    <span style="background: hsl(3, 78%, 74%);" class="tiny-sample"></span> hsl(3, 78%, 74%)
+                    <span style="background: hsl(68, 68%, 72%);" class="tiny-sample"></span>
+                    hsl(68, 68%, 72%)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="background: hsl(3, 78%, 34%);" class="tiny-sample"></span>
+                    hsl(3, 78%, 34%)
+                </td>
+                <td>
+                    <span style="background: hsl(3, 78%, 54%);" class="tiny-sample"></span>
+                    hsl(3, 78%, 54%)
+                </td>
+                <td>
+                    <span style="background: hsl(3, 78%, 74%);" class="tiny-sample"></span>
+                    hsl(3, 78%, 74%)
                 </td>
             </tr>
         </tbody>
     </table>
-    <p>В цветовом пространстве HSL компоненты hue и saturation будут без изменений,
-        а разницу значений компоненты lightness нужно добавить к цвету темы</p>
+    <p>In HSL color space, hue and saturation components remains the same, and
+    the difference betwee the lightness components we can add to the base color</p>
 </section>
 
 <section class="slide">
     <h2><a href="https://github.com/mistakster/postcss-themes-generator">postcss-themes-generator</a></h2>
     <ul>
-        <li>Плагин позволил команде поддерживать чистый и компактный CSS.</li>
-        <li>Плагин обрабатывает оттенки базовых цветов.</li>
-        <li>Сгенерированные стили работают в старых браузерах.</li>
+        <li>The plugin helps the team keep CSS clean and tide.</li>
+        <li>The plugin process the shades of the base color perfectly.</li>
+        <li>The generated styles works in aged browsers too.</li>
     </ul>
 </section>
 
 <section class="slide">
-    <h2 class="shout">Спасибо!</h2>
+    <h2 class="shout">Thank you!</h2>
 </section>
 
 <section class="slide" id="contacts">
-    <h2>Владимир Кузнецов</h2>
+    <h2>Vladimir Kuznetsov</h2>
     <p>
         <img src="img/twitter.svg" style="width: 24px; vertical-align: middle">
-        <a href="https://twitter.com/mistakster" target="_blank">@mistakster</a> (English)<br>
+        <a href="https://twitter.com/mistakster" target="_blank">@mistakster</a> (English, web-development)<br>
         <img src="img/twitter.svg" style="width: 24px; vertical-align: middle">
-        <a href="https://twitter.com/mista_k" target="_blank">@mista_k</a> (больше про жизнь)
+        <a href="https://twitter.com/mista_k" target="_blank">@mista_k</a> (Russian, mostly about my life)
     </p>
     <p>
         <img src="img/globe.svg" style="width: 24px; vertical-align: middle">
         <a href="https://noteskeeper.ru" target="_blank">noteskeeper.ru</a>
     </p>
     <p>
-        Слайды презентации:
-        <a href="https://mistakster.github.io/fronttalks-color-management/">mistakster.github.io/fronttalks-color-management</a>
+        Slides:
+        <a href="https://mistakster.github.io/css-minsk-js-color-management//">mistakster.github.io/css-minsk-js-color-management</a>
     </p>
 </section>
 
