@@ -127,8 +127,8 @@
 </section>
 
 <section class="slide">
-    <h2>PostCSS plugins transform AST</h2>
-    <img src="img/postcss-schematic2.svg" alt="PostCSS plugins transform AST">
+    <h2>PostCSS plugins transform the AST</h2>
+    <img src="img/postcss-schematic2.svg" alt="PostCSS plugins transform the AST">
 </section>
 
 <section class="slide">
@@ -278,7 +278,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Abstract Syntax Tree traversal</h2>
+    <h2>Abstract Syntax Tree</h2>
     <div class="columns two">
         <div>
             <p><strong>The types of the nodes</strong></p>
@@ -515,11 +515,11 @@ a { color: <mark>#556832</mark>; }
 
 <section class="slide">
     <h2><a href="https://github.com/mistakster/postcss-alter-color">postcss-alter-color</a></h2>
-    <p><strong>Takeaways</strong></p>
+    <p><strong>Takeaway</strong></p>
     <ol>
         <li>Learned a bit about AST explorer.</li>
         <li>Understood APIs of PostCSS and CSSTree.</li>
-        <li>Made a plugin, which makes more than ordinary search and replace in a text editor.</li>
+        <li>Made a&nbsp;plugin, which makes more than ordinary search and replace in&nbsp;a&nbsp;text&nbsp;editor.</li>
     </ol>
 </section>
 
@@ -610,9 +610,10 @@ a { color: <mark>#556832</mark>; }
 <section class="slide">
     <h2>The task</h2>
     <ul>
-        <li>We write CSS as usual keeping in mind the color scheme of the main site.</li>
-        <li>We use block and element modifiers (“primary”, “secondary” and “accent”) to set the colors.</li>
-        <li>The plugin generates additional rules with relevant color based on the scheme.</li>
+        <li>We&nbsp;write CSS as&nbsp;usual keeping in&nbsp;mind the color scheme of&nbsp;the main site.</li>
+        <li>We&nbsp;use block and element modifiers (&laquo;primary&raquo;, &laquo;secondary&raquo; and
+            &laquo;accent&raquo;) to&nbsp;set the colors.</li>
+        <li>The plugin generates additional rules with relevant color based on&nbsp;the scheme.</li>
     </ul>
 </section>
 
@@ -822,10 +823,10 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <p>In HSL color space, hue and saturation components remains the same, and
-        the difference between the lightness components we can add to the base color.</p>
+    <p>In&nbsp;HSL color space, hue and saturation components remains the same, and
+        the difference between the lightness components we&nbsp;can add to&nbsp;the base color.</p>
 
-    <p>
+    <p class="next">
         <span style="background: #f19ac7;" class="tiny-sample"></span> #f19ac7
         <span class="next">
             &rarr; <span style="background: hsl(329, 76%, 77%);" class="tiny-sample"></span> hsl(329, 76%, 77%)
@@ -850,7 +851,7 @@ a { color: <mark>#556832</mark>; }
 
 <section class="slide">
     <h2><a href="https://github.com/mistakster/postcss-themes-generator">postcss-themes-generator</a></h2>
-    <p><strong>Takeaways</strong></p>
+    <p><strong>Takeaway</strong></p>
     <ol>
         <li>The plugin helps the team keep CSS clean and tide.</li>
         <li>The plugin process the shades of the base color perfectly.</li>
