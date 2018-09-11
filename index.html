@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Case studies: Two color management plugins for PostCSS</title>
+    <title>Case studies: Two color management plugins for PostCSS &mdash; Vladimir Kuznetsov, Huntflow</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="shower/themes/material/styles/styles.css">
@@ -14,55 +14,100 @@
         .b {
             display: block;
         }
+
         .c {
             color: var(--color-medium);
         }
+
         .slide pre {
             margin-top: 0;
         }
-        .slide .shout {
-            box-sizing: border-box;
-        }
+
         .stamp {
             position: absolute;
             bottom: 0;
             right: 0;
             opacity: 0;
-            transform: translate(-20px,-20px) scale(2);
+            transform: translate(-20px, -20px) scale(2);
             transition: opacity 1s, transform 1s;
         }
+
         .stamp.active {
             opacity: 1;
-            transform: translate(-20px,-20px) scale(1);
+            transform: translate(-20px, -20px) scale(1);
         }
+
         .color-sample-col {
             width: 150px !important;
             text-align: center !important;
         }
+
         .color-sample {
             display: block;
             height: 3em;
             width: 3em;
             margin: 0.5em auto;
         }
+
         .tiny-sample {
             display: inline-block;
             width: 0.8em;
             height: 0.8em;
             vertical-align: baseline;
         }
+
+        #cover {
+            --spot-0-x: 0;
+            --spot-0-y: 0;
+            --spot-1-x: 0;
+            --spot-1-y: 0;
+            --spot-2-x: 0;
+            --spot-2-y: 0;
+            background: black;
+            color: white;
+        }
+
+        .spot {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            left: calc(50% - 300px);
+            top: calc(50% - 300px);
+            mix-blend-mode: screen;
+        }
+
+        .spot_0 {
+            background: rgb(120, 0, 0);
+            transform: translate(var(--spot-0-x), var(--spot-0-y));
+        }
+
+        .spot_1 {
+            background: rgb(0, 120, 0);
+            transform: translate(var(--spot-1-x), var(--spot-1-y));
+        }
+
+        .spot_2 {
+            background: rgb(0, 0, 120);
+            transform: translate(var(--spot-2-x), var(--spot-2-y));
+        }
     </style>
 </head>
-<body class="shower list">
+<body class="shower full">
 
 <header class="caption">
     <h1>Case studies: Two color management plugins for PostCSS</h1>
     <p>Vladimir Kuznetsov, Huntflow</p>
 </header>
 
-<section class="slide clear" id="cover">
+<section id="cover" class="slide clear">
+    <div class="cover w h">
+        <div class="spot spot_0"></div>
+        <div class="spot spot_1"></div>
+        <div class="spot spot_2"></div>
+    </div>
     <div style="text-align: center">
-        <h2 style="margin-top: 80px;">
+        <h2 style="margin-top: 80px; color: white;">
             <span class="b">Case studies:</span>
             <span class="b">Two color management</span>
             <span class="b">plugins for PostCSS</span>
@@ -84,10 +129,6 @@
 <section class="slide">
     <h2>PostCSS plugins transform AST</h2>
     <img src="img/postcss-schematic2.svg" alt="PostCSS plugins transform AST">
-</section>
-
-<section class="slide">
-    <h2 class="shout">PostCSS is useless without its&nbsp;plugins</h2>
 </section>
 
 <section class="slide">
@@ -161,18 +202,17 @@
         What can you do?
     </p>
 
-    <ul>
+    <ol class="next">
         <li>accept</li>
         <li>make a PR in the plugin</li>
         <li>write your own plugin</li>
-    </ul>
+    </ol>
+
+    <img src="img/doubt.svg" class="place b r" style="width: 300px; bottom: 30px; right: 30px;">
 </section>
 
 <section class="slide">
-    <h2><a href="https://dockyard.com/blog/2018/02/01/writing-your-first-postcss-plugin">
-        Writing Your First PostCSS Plugin
-    </a></h2>
-    <p>James Steinbach</p>
+    <h2 class="shout"><span class="b">My first</span> <span class="b">PostCSS plugin</span></h2>
 </section>
 
 <section class="slide">
@@ -194,45 +234,7 @@
 </section>
 
 <section class="slide">
-    <img src="https://via.placeholder.com/960x540" class="cover w h">
-</section>
-
-<section class="slide">
-    <h2 class="shout">
-        <span class="b">Abstract</span>
-        <span class="b">Syntax</span>
-        <span class="b">Tree</span>
-    </h2>
-</section>
-
-<section class="slide clear">
-    <img src="img/ast-explorer.png" class="cover w h">
-    <!--
-    https://astexplorer.net/#/gist/43328fc584ad1b12b54120222632a8d2/c8722503e6fb77d6a4163d7b14617946facffcb2
-    -->
-</section>
-
-<section class="slide">
-    <h2>Abstract Syntax Tree traversal</h2>
-    <p>The types of the node</p>
-    <ul>
-        <li>rule (div, .list)</li>
-        <li>declaration (color, background)</li>
-        <li>@rule (media, charset)</li>
-        <li>comment</li>
-    </ul>
-</section>
-
-<section class="slide">
-    <h2 class="shout">Unit tests</h2>
-</section>
-
-<section class="slide">
-    <img src="https://via.placeholder.com/960x540" class="cover w h">
-</section>
-
-<section class="slide">
-    <h2 class="shout">Example #1</h2>
+    <h2 class="shout">Case #1</h2>
 </section>
 
 <section class="slide">
@@ -269,6 +271,35 @@ a { color: <mark>#556832</mark>; }
   border-left: 1px solid <mark>#556832</mark>;
   border-right: solid <mark>#556832</mark> 1px;
 }</code></pre>
+</section>
+
+<section class="slide">
+    <h2 class="shout"><a href="https://api.postcss.org">api.postcss.org</a></h2>
+</section>
+
+<section class="slide">
+    <h2>Abstract Syntax Tree traversal</h2>
+    <div class="columns two">
+        <div>
+            <p><strong>The types of the nodes</strong></p>
+            <ul>
+                <li>rule <span class="c">(div, .list)</span></li>
+                <li>declaration <span class="c">(color, background)</span></li>
+                <li>@rule <span class="c">(media, charset)</span></li>
+                <li>comment</li>
+            </ul>
+        </div>
+        <div>
+            <p><strong>Traversal methods</strong></p>
+            <ul>
+                <li>walkRules()</li>
+                <li>walkDecls()</li>
+                <li>walkAtRules()</li>
+                <li>walkComments()</li>
+                <li>walk()</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 <section class="slide">
@@ -323,7 +354,8 @@ a { color: <mark>#556832</mark>; }
 <section class="slide">
     <h2>Parsing a decl</h2>
     <pre><code>#main { border: 1px solid #2F4F4F }</code></pre>
-    <pre><code>decl: {
+    <pre><code>{
+  type: "decl",
   props: "border",
   value: "1px solid #2F4F4F"
 }</code></pre>
@@ -405,21 +437,21 @@ a { color: <mark>#556832</mark>; }
 
 <section class="slide">
     <pre>
-        <code>function <mark>visitor</mark>(node, item, list) {</code>
+        <code>function <mark>identifierVisitor</mark>(node, item, list) {</code>
         <code>  if (node.name === 'darkslategray') {</code>
         <code>    // modify the node</code>
         <code>  }</code>
         <code>}</code>
         <code>cssTree.walk(parsedValue, {</code>
         <code>  visit: 'Identifier',</code>
-        <code>  <mark>enter: visitor</mark></code>
+        <code>  <mark>enter: identifierVisitor</mark></code>
         <code>});</code>
     </pre>
 </section>
 
 <section class="slide">
     <pre>
-        <code>function visitor(node, item, list) {</code>
+        <code>function identifierVisitor(node, item, list) {</code>
         <code>  if (node.name === '<mark>darkslategray</mark>') {</code>
         <code>    const data = cssTree.fromPlainObject({</code>
         <code>      type: 'HexColor',</code>
@@ -428,6 +460,19 @@ a { color: <mark>#556832</mark>; }
         <code>    list.replace(item, list.createItem(data));</code>
         <code>  }</code>
         <code>}</code>
+    </pre>
+</section>
+
+<section class="slide">
+    <pre>
+        <code>cssTree.walk(parsedValue, {</code>
+        <code>  visit: 'HexColor',</code>
+        <code>  enter: hexColorVisitor</code>
+        <code>});</code>
+        <code>cssTree.walk(parsedValue, {</code>
+        <code>  visit: 'Function',</code>
+        <code>  enter: functionVisitor</code>
+        <code>});</code>
     </pre>
 </section>
 
@@ -470,53 +515,54 @@ a { color: <mark>#556832</mark>; }
 
 <section class="slide">
     <h2><a href="https://github.com/mistakster/postcss-alter-color">postcss-alter-color</a></h2>
-    <ul>
+    <p><strong>Takeaways</strong></p>
+    <ol>
         <li>Learned a bit about AST explorer.</li>
-        <li>Understrood APIs of PostCSS and CSSTree.</li>
+        <li>Understood APIs of PostCSS and CSSTree.</li>
         <li>Made a plugin, which makes more than ordinary search and replace in a text editor.</li>
-    </ul>
+    </ol>
 </section>
 
 <section class="slide">
-    <h2 class="shout">Example #2</h2>
+    <h2 class="shout">Case #2</h2>
 </section>
 
 <section class="slide">
     <h2><a href="https://github.com/mistakster/postcss-themes-generator">postcss-themes-generator</a></h2>
     <table style="table-layout: fixed;">
         <tbody>
-            <tr>
-                <th class="color-sample-col">&nbsp;</th>
-                <th class="color-sample-col">Website</th>
-                <th class="color-sample-col">Portal</th>
-                <th class="color-sample-col">Business</th>
-                <th class="color-sample-col">International</th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>Primary</th>
-                <td><span class="color-sample" style="background: #e54096">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #0080c5">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #c1d730">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #e5352d">&nbsp;</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Secondary</th>
-                <td><span class="color-sample" style="background: #0080c5">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #044466">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #044466">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #007bc0">&nbsp;</span></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Accent</th>
-                <td><span class="color-sample" style="background: #c1d730">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #c1d730">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #0080c5">&nbsp;</span></td>
-                <td><span class="color-sample" style="background: #bd0a26">&nbsp;</span></td>
-                <td></td>
-            </tr>
+        <tr>
+            <th class="color-sample-col">&nbsp;</th>
+            <th class="color-sample-col">Website</th>
+            <th class="color-sample-col">Portal</th>
+            <th class="color-sample-col">Business</th>
+            <th class="color-sample-col">International</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Primary</th>
+            <td><span class="color-sample" style="background: #e54096">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #0080c5">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #c1d730">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #e5352d">&nbsp;</span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Secondary</th>
+            <td><span class="color-sample" style="background: #0080c5">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #044466">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #044466">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #007bc0">&nbsp;</span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Accent</th>
+            <td><span class="color-sample" style="background: #c1d730">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #c1d730">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #0080c5">&nbsp;</span></td>
+            <td><span class="color-sample" style="background: #bd0a26">&nbsp;</span></td>
+            <td></td>
+        </tr>
         </tbody>
     </table>
 </section>
@@ -542,15 +588,6 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Possible solutions</h2>
-    <ul>
-        <li>CSS custom properties;</li>
-        <li>Pre-processor variables and 4 different CSS-files;</li>
-        <li>PostCSS plugin to generate styles.</li>
-    </ul>
-</section>
-
-<section class="slide">
     <h2>CSS custom properties</h2>
     <pre>
         <code>:root                { --primary-color: <span style="background: #e54096;" class="tiny-sample"></span> #e54096; }</code>
@@ -562,11 +599,20 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
+    <h2>Possible solutions</h2>
+    <ul>
+        <li>CSS custom properties;</li>
+        <li>pre-processor variables and 4 different CSS-files;</li>
+        <li>PostCSS plugin to generate styles.</li>
+    </ul>
+</section>
+
+<section class="slide">
     <h2>The task</h2>
     <ul>
-        <li>We write CSS as ususal keeping in mind the color scheme of the main site.</li>
+        <li>We write CSS as usual keeping in mind the color scheme of the main site.</li>
         <li>We use block and element modifiers (“primary”, “secondary” and “accent”) to set the colors.</li>
-        <li>The plugin generates additional rules with relevant color based on the scheme</li>
+        <li>The plugin generates additional rules with relevant color based on the scheme.</li>
     </ul>
 </section>
 
@@ -679,7 +725,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>Complex cases</h2>
+    <h2>Tricky selectors</h2>
     <pre>
         <code>.tile_<mark>primary</mark> .text-tile__heading {</code>
         <code>  color: #e54096;</code>
@@ -694,104 +740,153 @@ a { color: <mark>#556832</mark>; }
     <h2>Light and dark shades</h2>
     <pre>
         <code>.button_primary[disabled] { </code>
-        <code>  background: lighten(<span style="background: #e54096;" class="tiny-sample"></span> #e54096, 20%); <span class="comment">/* <span style="background: #f19ac7;" class="tiny-sample"></span> #f19ac7 */</span></code>
+        <code>  background: lighten(<span style="background: #e54096;" class="tiny-sample"></span> #e54096, 20%); <span
+                class="comment">/* <span style="background: #f19ac7;"
+                class="tiny-sample"></span> #f19ac7 */</span></code>
         <code>}</code>
         <code>.overlay_primary {</code>
-        <code>  background: darken(<span style="background: #e54096;" class="tiny-sample"></span> #e54096, 20%); <span class="comment">/* <span style="background: #a81763;" class="tiny-sample"></span> #a81763 */</span></code>
+        <code>  background: darken(<span style="background: #e54096;" class="tiny-sample"></span> #e54096, 20%); <span
+                class="comment">/* <span style="background: #a81763;"
+                class="tiny-sample"></span> #a81763 */</span></code>
         <code>}</code>
     </pre>
 </section>
 
 <section class="slide">
+    <h2>Light and dark shades</h2>
     <table>
         <tbody>
-            <tr>
-                <th>Dark</th>
-                <th>Base</th>
-                <th>Light</th>
-            </tr>
-            <tr>
-                <td>
-                    <span style="background: hsl(329, 76%, 37%);" class="tiny-sample"></span>
-                    hsl(329, 76%, 37%)
-                </td>
-                <td>
-                    <span style="background: hsl(329, 76%, 57%);" class="tiny-sample"></span>
-                    hsl(329, 76%, 57%)
-                </td>
-                <td>
-                    <span style="background: hsl(329, 76%, 77%);" class="tiny-sample"></span>
-                    hsl(329, 76%, 77%)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span style="background: hsl(201, 100%, 19%);" class="tiny-sample"></span>
-                    hsl(201, 100%, 19%)
-                </td>
-                <td>
-                    <span style="background: hsl(201, 100%, 39%);" class="tiny-sample"></span>
-                    hsl(201, 100%, 39%)
-                </td>
-                <td>
-                    <span style="background: hsl(201, 100%, 59%);" class="tiny-sample"></span>
-                    hsl(201, 100%, 59%)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span style="background: hsl(68, 68%, 32%);" class="tiny-sample"></span>
-                    hsl(68, 68%, 32%)
-                </td>
-                <td>
-                    <span style="background: hsl(68, 68%, 52%);" class="tiny-sample"></span>
-                    hsl(68, 68%, 52%)
-                </td>
-                <td>
-                    <span style="background: hsl(68, 68%, 72%);" class="tiny-sample"></span>
-                    hsl(68, 68%, 72%)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span style="background: hsl(3, 78%, 34%);" class="tiny-sample"></span>
-                    hsl(3, 78%, 34%)
-                </td>
-                <td>
-                    <span style="background: hsl(3, 78%, 54%);" class="tiny-sample"></span>
-                    hsl(3, 78%, 54%)
-                </td>
-                <td>
-                    <span style="background: hsl(3, 78%, 74%);" class="tiny-sample"></span>
-                    hsl(3, 78%, 74%)
-                </td>
-            </tr>
+        <tr>
+            <th>Dark</th>
+            <th>Base</th>
+            <th>Light</th>
+        </tr>
+        <tr>
+            <td>
+                <span style="background: hsl(329, 76%, 37%);" class="tiny-sample"></span>
+                hsl(329, 76%, 37%)
+            </td>
+            <td>
+                <span style="background: hsl(329, 76%, 57%);" class="tiny-sample"></span>
+                hsl(329, 76%, 57%)
+            </td>
+            <td>
+                <span style="background: hsl(329, 76%, 77%);" class="tiny-sample"></span>
+                hsl(329, 76%, 77%)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="background: hsl(201, 100%, 19%);" class="tiny-sample"></span>
+                hsl(201, 100%, 19%)
+            </td>
+            <td>
+                <span style="background: hsl(201, 100%, 39%);" class="tiny-sample"></span>
+                hsl(201, 100%, 39%)
+            </td>
+            <td>
+                <span style="background: hsl(201, 100%, 59%);" class="tiny-sample"></span>
+                hsl(201, 100%, 59%)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="background: hsl(68, 68%, 32%);" class="tiny-sample"></span>
+                hsl(68, 68%, 32%)
+            </td>
+            <td>
+                <span style="background: hsl(68, 68%, 52%);" class="tiny-sample"></span>
+                hsl(68, 68%, 52%)
+            </td>
+            <td>
+                <span style="background: hsl(68, 68%, 72%);" class="tiny-sample"></span>
+                hsl(68, 68%, 72%)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="background: hsl(3, 78%, 34%);" class="tiny-sample"></span>
+                hsl(3, 78%, 34%)
+            </td>
+            <td>
+                <span style="background: hsl(3, 78%, 54%);" class="tiny-sample"></span>
+                hsl(3, 78%, 54%)
+            </td>
+            <td>
+                <span style="background: hsl(3, 78%, 74%);" class="tiny-sample"></span>
+                hsl(3, 78%, 74%)
+            </td>
+        </tr>
         </tbody>
     </table>
+</section>
+
+<section class="slide">
     <p>In HSL color space, hue and saturation components remains the same, and
-    the difference betwee the lightness components we can add to the base color</p>
+        the difference between the lightness components we can add to the base color.</p>
+
+    <p>
+        <span style="background: #f19ac7;" class="tiny-sample"></span> #f19ac7
+        <span class="next">
+            &rarr; <span style="background: hsl(329, 76%, 77%);" class="tiny-sample"></span> hsl(329, 76%, 77%)
+        </span>
+        <span class="next">
+            &rarr; <span style="background: hsl(329, 76%, 57%);" class="tiny-sample"></span> hsl(329, 76%, 57%)
+        </span>
+        <span class="next">
+            &rarr; &Delta;l = 20%
+        </span>
+    </p>
+    <p class="next">
+        <span style="background: #0080c5;" class="tiny-sample"></span> #0080c5
+        <span class="next">
+            &rarr; <span style="background: hsl(201, 100%, 39%);" class="tiny-sample"></span> hsl(201, 100%, 39%)
+        </span>
+        <span class="next">
+            &rarr; <span style="background: hsl(201, 100%, 59%);" class="tiny-sample"></span> hsl(201, 100%, 59%)
+        </span>
+    </p>
 </section>
 
 <section class="slide">
     <h2><a href="https://github.com/mistakster/postcss-themes-generator">postcss-themes-generator</a></h2>
-    <ul>
+    <p><strong>Takeaways</strong></p>
+    <ol>
         <li>The plugin helps the team keep CSS clean and tide.</li>
         <li>The plugin process the shades of the base color perfectly.</li>
         <li>The generated styles works in aged browsers too.</li>
-    </ul>
+    </ol>
 </section>
 
 <section class="slide">
-    <h2 class="shout">Thank you!</h2>
+    <h2 class="shout">
+        <span class="b">Abstract</span>
+        <span class="b">Syntax</span>
+        <span class="b">Tree</span>
+    </h2>
+</section>
+
+<section class="slide clear">
+    <img src="img/ast-explorer.png" class="cover w h">
+    <!--
+    https://astexplorer.net/#/gist/43328fc584ad1b12b54120222632a8d2/c8722503e6fb77d6a4163d7b14617946facffcb2
+    -->
+</section>
+
+<section class="slide">
+    <p style="position: absolute; z-index: 1; color: white;">James Steinbach</p>
+    <h2 class="shout"><a href="https://dockyard.com/blog/2018/02/01/writing-your-first-postcss-plugin">
+        Writing Your First PostCSS Plugin
+    </a></h2>
 </section>
 
 <section class="slide" id="contacts">
     <h2>Vladimir Kuznetsov</h2>
     <p>
         <img src="img/twitter.svg" style="width: 24px; vertical-align: middle">
-        <a href="https://twitter.com/mistakster" target="_blank">@mistakster</a> (English, web-development)<br>
+        <a href="https://twitter.com/mistakster" target="_blank">@mistakster</a> (English)<br>
         <img src="img/twitter.svg" style="width: 24px; vertical-align: middle">
-        <a href="https://twitter.com/mista_k" target="_blank">@mista_k</a> (Russian, mostly about my life)
+        <a href="https://twitter.com/mista_k" target="_blank">@mista_k</a> (больше про жизнь)
     </p>
     <p>
         <img src="img/globe.svg" style="width: 24px; vertical-align: middle">
@@ -799,7 +894,7 @@ a { color: <mark>#556832</mark>; }
     </p>
     <p>
         Slides:
-        <a href="https://mistakster.github.io/css-minsk-js-color-management//">mistakster.github.io/css-minsk-js-color-management</a>
+        <a href="https://bit.ly/cmj18-cm">bit.ly/cmj18-cm</a>
     </p>
 </section>
 
@@ -810,6 +905,52 @@ a { color: <mark>#556832</mark>; }
 <div class="progress"></div>
 
 <script src="shower/shower.min.js"></script>
+<script>
+	'use strict';
+
+	(function () {
+		const coverElement = document.getElementById('cover');
+		const params = [[2500, 3300], [3100, 2100], [2900, 2700]];
+		const start = Math.random() * 1e8 + 1e6;
+		let isRunning = false;
+
+		function frame(t) {
+			for (let i = 0; i < params.length; i++) {
+				const x = Math.round(300 * Math.cos(t / params[i][0]));
+				const y = Math.round(200 * Math.sin(t / params[i][1]));
+				coverElement.style.setProperty('--spot-' + i + '-x', x + 'px');
+				coverElement.style.setProperty('--spot-' + i + '-y', y + 'px');
+			}
+		}
+
+		function loop() {
+			window.requestAnimationFrame(function (time) {
+				frame(time + start);
+				if (isRunning) {
+					loop();
+				}
+			});
+		}
+
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.target.classList.contains('active')) {
+					if (isRunning) {
+						return;
+					}
+					isRunning = true;
+					loop();
+				} else {
+					isRunning = false;
+				}
+			});
+		});
+
+		observer.observe(coverElement, {
+			attributes: true
+		});
+	}());
+</script>
 
 </body>
 </html>
