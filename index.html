@@ -158,8 +158,8 @@
                 <li>postcss-at2x</li>
             </ul>
             <ul class="next">
-                <li>postcss-aspect-ratio</li>
-                <li>postcss-zindex</li>
+                <li>postcss-bem-to-js</li>
+                <li>postcss-click</li>
             </ul>
         </div>
     </div>
@@ -176,10 +176,8 @@
             <ul class="next">
                 <li>postcss-clearfix</li>
                 <li>postcss-focus</li>
-            </ul>
-            <ul class="next">
-                <li>postcss-bem-to-js</li>
-                <li>postcss-click</li>
+                <li>postcss-aspect-ratio</li>
+                <li>postcss-zindex</li>
             </ul>
         </div>
         <div>
@@ -199,7 +197,7 @@
 <section class="slide">
     <p>
         It might happen that an existing plugin works not as you’re expecting.<br>
-        What can you do?
+        <strong>What can you do?</strong>
     </p>
 
     <ol class="next">
@@ -374,7 +372,7 @@ a { color: <mark>#556832</mark>; }
         <code>root.walkDecls(decl => {</code>
         <code>  const parsedValue = cssTree.parse(</code>
         <code>    decl.value,</code>
-        <code>    { context: 'value' }</code>
+        <code class="mark next">    { context: 'value' }</code>
         <code>  );</code>
         <code>  // you can modify parsedValue here</code>
         <code>  decl.value = cssTree.generate(parsedValue);</code>
@@ -395,7 +393,7 @@ a { color: <mark>#556832</mark>; }
         <code>  { type: "WhiteSpace", value: " " },</code>
         <code>  { type: "Identifier", name: "solid" },</code>
         <code>  { type: "WhiteSpace", value: " " },</code>
-        <code>  { type: "HexColor", value: "2F4F4F" }</code>
+        <code class="mark next">  { type: "HexColor", value: "2F4F4F" }</code>
         <code>] }</code>
     </pre>
 </section>
@@ -427,12 +425,17 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>The types of the CSSTree nodes, which can contain color</h2>
+    <h2>The types of the CSSTree nodes,<br>which can contain color</h2>
     <ul>
         <li>Identifier <span class="c">darkslategray</span></li>
         <li>HexColor <span class="c">#2F4F4F</span></li>
         <li>Function <span class="c">rgb(47, 79, 79)</span></li>
     </ul>
+    <p>
+        <a href="https://github.com/csstree/csstree/blob/master/docs/traversal.md">
+            CSSTree AST traversal
+        </a>
+    </p>
 </section>
 
 <section class="slide">
@@ -519,7 +522,7 @@ a { color: <mark>#556832</mark>; }
     <ol>
         <li>Learned a bit about AST explorer.</li>
         <li>Understood APIs of PostCSS and CSSTree.</li>
-        <li>Made a&nbsp;plugin, which makes more than ordinary search and replace in&nbsp;a&nbsp;text&nbsp;editor.</li>
+        <li>Made the&nbsp;plugin, which makes more than ordinary search and replace in&nbsp;a&nbsp;text&nbsp;editor.</li>
     </ol>
 </section>
 
@@ -656,7 +659,8 @@ a { color: <mark>#556832</mark>; }
     <pre>
         <code>function getConfig(rule, options) {</code>
         <code>  return options.find(config => {</code>
-        <code>    const p = `_${config.name}(:[a-zA-Z]+)?(\\s.*)?$`;</code>
+        <code class="comment">    // .block_modifier or .block__element_modifier</code>
+        <code class="mark next">    const p = `_${config.name}(:[a-zA-Z]+)?(\\s.*)?$`;</code>
         <code>    const rx = new RegExp(p);</code>
         <code>    return rule.selectors.every(s => rx.test(s));</code>
         <code>  });</code>
@@ -670,9 +674,9 @@ a { color: <mark>#556832</mark>; }
         <code>  "name": "primary",</code>
         <code>  "match": "#e54096",</code>
         <code>  "themes": {</code>
-        <code>    "portal": "#0080c5",</code>
-        <code>    "business": "#c1d730",</code>
-        <code>    "international": "#e5352d"</code>
+        <code class="mark next">    "portal": "#0080c5",</code>
+        <code class="mark next">    "business": "#c1d730",</code>
+        <code class="mark next">    "international": "#e5352d"</code>
         <code>  }</code>
         <code>}</code>
     </pre>
@@ -853,7 +857,7 @@ a { color: <mark>#556832</mark>; }
     <h2><a href="https://github.com/mistakster/postcss-themes-generator">postcss-themes-generator</a></h2>
     <p><strong>Takeaway</strong></p>
     <ol>
-        <li>The plugin helps the team keep CSS clean and tide.</li>
+        <li>The plugin helps the team keep CSS clean and tidy.</li>
         <li>The plugin process the shades of the base color perfectly.</li>
         <li>The generated styles works in aged browsers too.</li>
     </ol>
