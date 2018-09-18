@@ -25,16 +25,18 @@
 
         .stamp {
             position: absolute;
-            bottom: 0;
-            right: 0;
+            bottom: 20px;
+            right: 20px;
+            width: 264px;
+            height: 264px;
             opacity: 0;
-            transform: translate(-20px, -20px) scale(2);
+            transform: scale(2);
             transition: opacity 1s, transform 1s;
         }
 
         .stamp.active {
             opacity: 1;
-            transform: translate(-20px, -20px) scale(1);
+            transform: scale(1);
         }
 
         .color-sample-col {
@@ -206,7 +208,7 @@
         <li>write your own plugin</li>
     </ol>
 
-    <img src="img/doubt.svg" class="place b r" style="width: 300px; bottom: 30px; right: 30px;">
+    <img src="img/emoji-doubt.png" alt="Сомнения" class="stamp next">
 </section>
 
 <section class="slide">
@@ -360,7 +362,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide clear">
-    <img src="img/lamp.svg" alt="Idea!" class="cover w h">
+    <img src="img/lamp.svg" alt="Idea!" class="cover h">
 </section>
 
 <section class="slide">
@@ -381,7 +383,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide clear">
-    <img src="img/inception-toupie.jpg" alt="A spinning top" class="cover w h">
+    <img src="img/inception-toupie.jpg" alt="A spinning top" class="cover h">
 </section>
 
 <section class="slide">
@@ -512,7 +514,7 @@ a { color: <mark>#556832</mark>; }
         <code>  ] }</code>
         <code>] }</code>
     </pre>
-    <img src="img/emoji-blow.png" alt="Взрывающаяся голова" width="180" height="180" class="stamp next">
+    <img src="img/emoji-blow.png" alt="Blowing head" class="stamp next">
 </section>
 
 
@@ -593,10 +595,10 @@ a { color: <mark>#556832</mark>; }
 <section class="slide">
     <h2>CSS custom properties</h2>
     <pre>
-        <code>:root                { --primary-color: <span style="background: #e54096;" class="tiny-sample"></span> #e54096; }</code>
-        <code>.theme-portal        { --primary-color: <span style="background: #0080c5;" class="tiny-sample"></span> #0080c5; }</code>
-        <code>.theme-business      { --primary-color: <span style="background: #c1d730;" class="tiny-sample"></span> #c1d730; }</code>
-        <code>.theme-international { --primary-color: <span style="background: #e5352d;" class="tiny-sample"></span> #e5352d; }</code>
+        <code>:root                { --primary-color: <span style="background: #e54096;" class="tiny-sample"></span> #E54096; }</code>
+        <code>.theme-portal        { --primary-color: <span style="background: #0080c5;" class="tiny-sample"></span> #0080C5; }</code>
+        <code>.theme-business      { --primary-color: <span style="background: #c1d730;" class="tiny-sample"></span> #C1D730; }</code>
+        <code>.theme-international { --primary-color: <span style="background: #e5352d;" class="tiny-sample"></span> #E5352D; }</code>
         <code>.tile_primary { background: var(--primary-color); }</code>
     </pre>
 </section>
@@ -604,9 +606,9 @@ a { color: <mark>#556832</mark>; }
 <section class="slide">
     <h2>Possible solutions</h2>
     <ul>
-        <li>CSS custom properties;</li>
-        <li>pre-processor variables and 4 different CSS-files;</li>
-        <li>PostCSS plugin to generate styles.</li>
+        <li>Use CSS custom properties.</li>
+        <li>Build 4 different CSS-files changing pre-processor variables.</li>
+        <li>Write a PostCSS plugin to generate styles.</li>
     </ul>
 </section>
 
@@ -622,11 +624,11 @@ a { color: <mark>#556832</mark>; }
 
 <section class="slide">
     <h2>Configuration</h2>
-    <pre><code>[ { "name": "primary", "match": "#e54096",
+    <pre><code>[ { "name": "primary", "match": "#E54096",
   "themes": {
-    "portal": "#0080c5",
-    "business": "#c1d730",
-    "international": "#e5352d"
+    "portal": "#0080C5",
+    "business": "#C1D730",
+    "international": "#E5352D"
   }
 }, { name: "secondary", &hellip; } ]</code></pre>
 </section>
@@ -634,10 +636,10 @@ a { color: <mark>#556832</mark>; }
 <section class="slide">
     <h2>Result</h2>
     <pre>
-        <code class="mark">.tile_primary { color: <span style="background: #e54096;" class="tiny-sample"></span> #e54096 }</code>
-        <code>.theme-portal .tile_primary { color: <span style="background: #0080c5;" class="tiny-sample"></span> #0080c5 }</code>
-        <code>.theme-business .tile_primary { color: <span style="background: #c1d730;" class="tiny-sample"></span> #c1d730 }</code>
-        <code>.theme-international .tile_primary { color: <span style="background: #e5352d;" class="tiny-sample"></span> #e5352d }</code>
+        <code class="mark">.tile_primary { color: <span style="background: #e54096;" class="tiny-sample"></span> #E54096 }</code>
+        <code>.theme-portal .tile_primary { color: <span style="background: #0080c5;" class="tiny-sample"></span> #0080C5 }</code>
+        <code>.theme-business .tile_primary { color: <span style="background: #c1d730;" class="tiny-sample"></span> #C1D730 }</code>
+        <code>.theme-international .tile_primary { color: <span style="background: #e5352d;" class="tiny-sample"></span> #E5352D }</code>
     </pre>
 </section>
 
@@ -672,11 +674,11 @@ a { color: <mark>#556832</mark>; }
     <pre>
         <code>{</code>
         <code>  "name": "primary",</code>
-        <code>  "match": "#e54096",</code>
+        <code>  "match": "#E54096",</code>
         <code>  "themes": {</code>
-        <code class="mark next">    "portal": "#0080c5",</code>
-        <code class="mark next">    "business": "#c1d730",</code>
-        <code class="mark next">    "international": "#e5352d"</code>
+        <code class="mark next">    "portal": "#0080C5",</code>
+        <code class="mark next">    "business": "#C1D730",</code>
+        <code class="mark next">    "international": "#E5352D"</code>
         <code>  }</code>
         <code>}</code>
     </pre>
@@ -727,16 +729,18 @@ a { color: <mark>#556832</mark>; }
     <h2>Suspicious rule</h2>
     <p>A rule contains modifier, but plugin can’t find any color to change.</p>
     <pre><code>rule.warn(result, 'Suspicious rule');</code></pre>
+
+    <img src="img/emoji-suspect.png" alt="Suspect" class="stamp next">
 </section>
 
 <section class="slide">
     <h2>Tricky selectors</h2>
     <pre>
         <code>.tile_<mark>primary</mark> .text-tile__heading {</code>
-        <code>  color: #e54096;</code>
+        <code>  color: #E54096;</code>
         <code>}</code>
         <code>.tile__badge_<mark>primary</mark>:hover {</code>
-        <code>  background-color: #e54096;</code>
+        <code>  background-color: #E54096;</code>
         <code>}</code>
     </pre>
 </section>
@@ -745,14 +749,14 @@ a { color: <mark>#556832</mark>; }
     <h2>Light and dark shades</h2>
     <pre>
         <code>.button_primary[disabled] { </code>
-        <code>  background: lighten(<span style="background: #e54096;" class="tiny-sample"></span> #e54096, 20%); <span
+        <code>  background: lighten(<span style="background: #e54096;" class="tiny-sample"></span> #E54096, 20%); <span
                 class="comment">/* <span style="background: #f19ac7;"
-                class="tiny-sample"></span> #f19ac7 */</span></code>
+                class="tiny-sample"></span> #F19AC7 */</span></code>
         <code>}</code>
         <code>.overlay_primary {</code>
-        <code>  background: darken(<span style="background: #e54096;" class="tiny-sample"></span> #e54096, 20%); <span
+        <code>  background: darken(<span style="background: #e54096;" class="tiny-sample"></span> #E54096, 20%); <span
                 class="comment">/* <span style="background: #a81763;"
-                class="tiny-sample"></span> #a81763 */</span></code>
+                class="tiny-sample"></span> #A81763 */</span></code>
         <code>}</code>
     </pre>
 </section>
@@ -831,7 +835,7 @@ a { color: <mark>#556832</mark>; }
         the difference between the lightness components we&nbsp;can add to&nbsp;the base color.</p>
 
     <p class="next">
-        <span style="background: #f19ac7;" class="tiny-sample"></span> #f19ac7
+        <span style="background: #f19ac7;" class="tiny-sample"></span> #F19AC7
         <span class="next">
             &rarr; <span style="background: hsl(329, 76%, 77%);" class="tiny-sample"></span> hsl(329, 76%, 77%)
         </span>
@@ -843,12 +847,15 @@ a { color: <mark>#556832</mark>; }
         </span>
     </p>
     <p class="next">
-        <span style="background: #0080c5;" class="tiny-sample"></span> #0080c5
+        <span style="background: #0080c5;" class="tiny-sample"></span> #0080C5
         <span class="next">
             &rarr; <span style="background: hsl(201, 100%, 39%);" class="tiny-sample"></span> hsl(201, 100%, 39%)
         </span>
         <span class="next">
             &rarr; <span style="background: hsl(201, 100%, 59%);" class="tiny-sample"></span> hsl(201, 100%, 59%)
+        </span>
+        <span class="next">
+            &rarr; <span style="background: #2eb6ff;" class="tiny-sample"></span> #2EB6FF
         </span>
     </p>
 </section>
@@ -872,7 +879,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide clear">
-    <img src="img/ast-explorer.png" class="cover w h">
+    <img src="img/ast-explorer.png" class="cover w">
     <!--
     https://astexplorer.net/#/gist/43328fc584ad1b12b54120222632a8d2/c8722503e6fb77d6a4163d7b14617946facffcb2
     -->
@@ -911,50 +918,50 @@ a { color: <mark>#556832</mark>; }
 
 <script src="shower/shower.min.js"></script>
 <script>
-	'use strict';
+    'use strict';
 
-	(function () {
-		const coverElement = document.getElementById('cover');
-		const params = [[2500, 3300], [3100, 2100], [2900, 2700]];
-		const start = Math.random() * 1e8 + 1e6;
-		let isRunning = false;
+    (function () {
+        const coverElement = document.getElementById('cover');
+        const params = [[2500, 3300], [3100, 2100], [2900, 2700]];
+        const start = Math.random() * 1e8 + 1e6;
+        let isRunning = false;
 
-		function frame(t) {
-			for (let i = 0; i < params.length; i++) {
-				const x = Math.round(300 * Math.cos(t / params[i][0]));
-				const y = Math.round(200 * Math.sin(t / params[i][1]));
-				coverElement.style.setProperty('--spot-' + i + '-x', x + 'px');
-				coverElement.style.setProperty('--spot-' + i + '-y', y + 'px');
-			}
-		}
+        function frame(t) {
+            for (let i = 0; i < params.length; i++) {
+                const x = Math.round(300 * Math.cos(t / params[i][0]));
+                const y = Math.round(200 * Math.sin(t / params[i][1]));
+                coverElement.style.setProperty('--spot-' + i + '-x', x + 'px');
+                coverElement.style.setProperty('--spot-' + i + '-y', y + 'px');
+            }
+        }
 
-		function loop() {
-			window.requestAnimationFrame(function (time) {
-				frame(time + start);
-				if (isRunning) {
-					loop();
-				}
-			});
-		}
+        function loop() {
+            window.requestAnimationFrame(function (time) {
+                frame(time + start);
+                if (isRunning) {
+                    loop();
+                }
+            });
+        }
 
-		const observer = new MutationObserver((mutations) => {
-			mutations.forEach((mutation) => {
-				if (mutation.target.classList.contains('active')) {
-					if (isRunning) {
-						return;
-					}
-					isRunning = true;
-					loop();
-				} else {
-					isRunning = false;
-				}
-			});
-		});
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.classList.contains('active')) {
+                    if (isRunning) {
+                        return;
+                    }
+                    isRunning = true;
+                    loop();
+                } else {
+                    isRunning = false;
+                }
+            });
+        });
 
-		observer.observe(coverElement, {
-			attributes: true
-		});
-	}());
+        observer.observe(coverElement, {
+            attributes: true
+        });
+    }());
 </script>
 
 </body>
