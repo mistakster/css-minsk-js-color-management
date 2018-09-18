@@ -203,10 +203,10 @@
         <strong>What can you do?</strong>
     </p>
 
-    <ol class="next">
-        <li>accept</li>
-        <li>make a PR in the plugin</li>
-        <li>write your own plugin</li>
+    <ol>
+        <li class="next">Accept.</li>
+        <li class="next">Make a PR in the plugin.</li>
+        <li class="next">Write your own plugin.</li>
     </ol>
 
     <img src="img/emoji-doubt.png" alt="Сомнения" class="stamp next">
@@ -305,6 +305,22 @@ a { color: <mark>#556832</mark>; }
 
 <section class="slide">
     <pre style="font-size: 90%;">
+        <code>#main, div.sidebar {</code>
+        <code>  background: white; color: rgb(47, 79, 79);</code>
+        <code>}</code>
+    </pre>
+    <pre style="font-size: 90%;">
+        <code>{ type: "root", nodes: [</code>
+        <code>  { type: "rule", selector: "<mark>#main, div.sidebar</mark>", nodes: [</code>
+        <code>    { type: "decl", prop: "<mark>background</mark>", value: "<mark>white</mark>" },</code>
+        <code>    { type: "decl", prop: "<mark>color</mark>", value: "<mark>rgb(47, 79, 79)</mark>" }</code>
+        <code>  ] }</code>
+        <code>] }</code>
+    </pre>
+</section>
+
+<section class="slide">
+    <pre style="font-size: 90%;">
         <code>function plugin(options) {</code>
         <code>  return function (root) {</code>
         <code>    root.walkDecls(function (decl) {</code>
@@ -357,7 +373,7 @@ a { color: <mark>#556832</mark>; }
     <pre><code>#main { border: 1px solid #2F4F4F }</code></pre>
     <pre><code>{
   type: "decl",
-  props: "border",
+  prop: "border",
   value: "1px solid #2F4F4F"
 }</code></pre>
 </section>
@@ -377,7 +393,7 @@ a { color: <mark>#556832</mark>; }
         <code>    decl.value,</code>
         <code class="mark next">    { context: 'value' }</code>
         <code>  );</code>
-        <code>  // you can modify parsedValue here</code>
+        <code class="comment">  // you can modify parsedValue here</code>
         <code>  decl.value = cssTree.generate(parsedValue);</code>
         <code>});</code>
     </pre>
@@ -524,8 +540,9 @@ a { color: <mark>#556832</mark>; }
     <p><strong>Takeaway</strong></p>
     <ol>
         <li>Learned a bit about AST explorer.</li>
-        <li>Understood APIs of PostCSS and CSSTree.</li>
-        <li>Made the&nbsp;plugin, which makes more than ordinary search and replace in&nbsp;a&nbsp;text&nbsp;editor.</li>
+        <li class="next">Understood APIs of PostCSS and CSSTree.</li>
+        <li class="next">Made the&nbsp;plugin, which makes more than ordinary<br>
+            search and replace in&nbsp;a&nbsp;text&nbsp;editor.</li>
     </ol>
 </section>
 
@@ -617,9 +634,8 @@ a { color: <mark>#556832</mark>; }
     <h2>The task</h2>
     <ul>
         <li>We&nbsp;write CSS as&nbsp;usual keeping in&nbsp;mind the color scheme of&nbsp;the main site.</li>
-        <li>We&nbsp;use block and element modifiers (&laquo;primary&raquo;, &laquo;secondary&raquo; and
-            &laquo;accent&raquo;) to&nbsp;set the colors.</li>
-        <li>The plugin generates additional rules with relevant color based on&nbsp;the scheme.</li>
+        <li>We&nbsp;use block and element modifiers to&nbsp;set the colors.</li>
+        <li>The plugin generates additional rules with relevant color based on&nbsp;the&nbsp;scheme.</li>
     </ul>
 </section>
 
@@ -832,10 +848,11 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <p>In&nbsp;HSL color space, hue and saturation components remains the same, and
-        the difference between the lightness components we&nbsp;can add to&nbsp;the base color.</p>
+    <p>In&nbsp;HSL color space, hue and saturation components remains the same,
+        and&nbsp;the difference between the lightness components we&nbsp;can add
+        to&nbsp;the&nbsp;base&nbsp;color.</p>
 
-    <p class="next">
+    <p class="next" style="white-space: nowrap">
         <span style="background: #f19ac7;" class="tiny-sample"></span> #F19AC7
         <span class="next">
             &rarr; <span style="background: hsl(329, 76%, 77%);" class="tiny-sample"></span> hsl(329, 76%, 77%)
@@ -847,7 +864,7 @@ a { color: <mark>#556832</mark>; }
             &rarr; &Delta;l = 20%
         </span>
     </p>
-    <p class="next">
+    <p class="next" style="white-space: nowrap">
         <span style="background: #0080c5;" class="tiny-sample"></span> #0080C5
         <span class="next">
             &rarr; <span style="background: hsl(201, 100%, 39%);" class="tiny-sample"></span> hsl(201, 100%, 39%)
@@ -866,8 +883,8 @@ a { color: <mark>#556832</mark>; }
     <p><strong>Takeaway</strong></p>
     <ol>
         <li>The plugin helps the team keep CSS clean and tidy.</li>
-        <li>The plugin process the shades of the base color perfectly.</li>
-        <li>The generated styles works in aged browsers too.</li>
+        <li class="next">The plugin process the shades of the base color perfectly.</li>
+        <li class="next">The generated styles works in aged browsers too.</li>
     </ol>
 </section>
 
