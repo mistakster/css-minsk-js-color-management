@@ -631,7 +631,7 @@ a { color: <mark>#556832</mark>; }
 </section>
 
 <section class="slide">
-    <h2>The task</h2>
+    <h2>Objectives</h2>
     <ul>
         <li>We&nbsp;write CSS as&nbsp;usual keeping in&nbsp;mind the color scheme of&nbsp;the main site.</li>
         <li>We&nbsp;use block and element modifiers to&nbsp;set the colors.</li>
@@ -717,12 +717,11 @@ a { color: <mark>#556832</mark>; }
 
 <section class="slide">
     <pre>
-        <code>function makeThemedRule(rule, themeName, config) {</code>
+        <code>function makeThemedRule(rule, name, config) {</code>
         <code>  const themedRule = rule.clone();</code>
         <code>  themedRule.selectors = themedRule.selectors</code>
-        <code>    .map(selector => `.theme-${themeName} ${selector}`);</code>
-        <code class="mark next">  const processor = getDeclProcessor(themeName, config);</code>
-        <code>  themedRule.walkDecls(processor);</code>
+        <code>    .map(selector => `.theme-${name} ${selector}`);</code>
+        <code class="mark next">  themedRule.walkDecls(getDeclProcessor(name, config));</code>
         <code>  return themedRule;</code>
         <code>}</code>
     </pre>
